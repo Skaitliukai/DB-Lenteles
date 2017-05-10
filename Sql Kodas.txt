@@ -1,0 +1,36 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Data.SqlClient;
+using System.Data;
+
+namespace ConsoleApp1
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Random rnd = new Random();
+            int skaitliuko_ID = rnd.Next(1111111, 9999999);
+	    string naudotojas = 'User1';
+            int skaitliuko_rodmenys = 123456789;
+	    string skaitliuko_tipas = '';
+	    string skaitliuko_ivedimo_data = DateTime.Today.ToString("yyyy/MM/dd");
+
+ 	SqlConnection con = new SqlConnection("Server=skaitliukai.database.windows.net, 1433; Database=Skaitliukai;Uid=skaitliukai;Pwd=Loxlox123;");
+        con.Open();
+
+
+            
+	String query = "INSERT INTO Skaitliukai VALUES ('" + skaitliuko_ID + "', '" + skaitliuko_tipas + "' , '" + skaitliuko_rodmenys + "', '" + naudotojas + "' );";
+		SqlCommand cmd = new SqlCommand(query, con);
+			cmd.ExecuteNonQuery();
+
+	String query = "INSERT INTO Skaitliuko_kita_info VALUES ('" + skaitliuko_ID + "','" + skaitliuko_ivedimo_data + "' );";
+		SqlCommand cmd = new SqlCommand(query, con);
+			cmd.ExecuteNonQuery();
+        }
+    }
+}

@@ -2,6 +2,12 @@ Create database Skaitliukai;
 
 Use Skaitliukai;
 
+Create table Skaitliukai (Skaitliuko_ID INT NOT NULL, Skaitliuko_tipas CHAR(30) NOT NULL, Skaitliuko_rodmenys FLOAT NOT NULL,
+CONSTRAINT skaitliukai_pk PRIMARY KEY (Skaitliuko_ID));
+
+Create table skaitliuko_kita_info (Skaitliuko_ID int NOT NULL, skaitliuko_ivedimo_data DATE NOT NULL, CONSTRAINT
+skaitliuko_fk FOREIGN KEY (Skaitliuko_ID) REFERENCES Skaitliukai(Skaitliuko_ID));
+
 Create table Elektros_Skaitliukai (Skaitliuko_numeris INT NOT NULL, Skaitliuko_parodymai INT NOT NULL);
 
 Create table Vandens_Skaitliukai (Skaitliuko_numeris INT NOT NULL, Skaitliuko_parodymai INT NOT NULL);
