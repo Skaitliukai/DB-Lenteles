@@ -1,0 +1,17 @@
+Random rnd = new Random();
+            int Id = rnd.Next(11111, 99999);
+            string TypeId = "Elektra";
+            double Number = 9999999;
+            string Username = "Naudotojas";
+            DateTime DateCreated = DateTime.Now;
+
+            SqlConnection con = new SqlConnection("Server=skaitliukai.database.windows.net, 1433; Database=Skaitliukai;Uid=skaitliukai;Pwd=Loxlox123;");
+            con.Open();
+
+            String query = "INSERT INTO Skaitliukai VALUES ('" + Id + "', '" + TypeId + "' , '" + Number + "', '" + Username + "' );";
+            SqlCommand cmd = new SqlCommand(query, con);
+            cmd.ExecuteNonQuery();
+
+            String query2 = "INSERT INTO Skaitliuko_kita_info VALUES ('" + Id + "','" + DateCreated + "' );";
+            SqlCommand cmd2 = new SqlCommand(query2, con);
+            cmd2.ExecuteNonQuery();
